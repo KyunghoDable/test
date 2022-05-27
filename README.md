@@ -1,9 +1,13 @@
+# Value 파일 내 AlertManager 슬랙 채널 및 타이틀명 변경
+alertmanager.config.receivers[1].slack_configs.title
+alertmanager.config.receivers[1].slack_configs.channel
+
 # Install
 ```console
-CLUSTER_NAME=
-ALERTMANAGER_URL=
-PROMETHEUS_URL=
-GRAFANA_URL=
+CLUSTER_NAME=fluentbit-test-1
+ALERTMANAGER_URL=asd.dable.io
+PROMETHEUS_URL=zxc.dable.io
+GRAFANA_URL=qwe.dable.io
 GITHUB_TOKEN=""
 
 # Create Monitoring Namespace
@@ -33,7 +37,6 @@ curl https://grafana.com/api/dashboards/7645/revisions/120/download | sed "s/\${
 curl https://grafana.com/api/dashboards/8588/revisions/1/download | sed "s/\${DS_PROMETHEUS}/Prometheus/g" > metric-dashboard.json
 
 # Add Dashboard
-# reco/ad api 등의 커스텀은 import 가 아직 되지 않음.. 확인 필요
 kubectl -n monitoring delete configmap my-custom-dashboard
 kubectl -n monitoring create configmap my-custom-dashboard --from-file nginx-ingress-dashboard.json --from-file istio-controlplane-dashboard.json --from-file metric-dashboard.json --from-file ad-api.json
 kubectl -n monitoring annotate configmaps my-custom-dashboard k8s-sidecar-target-directory="/tmp/dashboards/dable"
