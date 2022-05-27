@@ -20,6 +20,11 @@ helm upgrade --install -n monitoring prometheus-operator prometheus-community/ku
     --set prometheus.ingress.hosts={$PROMETHEUS_URL}
 ```
 
+
+# Dashboard
+- 아래 방식으로 하는 경우 추가는 되지만 에러로 인해 보이지 않음 
+- Grafana 자체적인 문제로 확인됨 (https://medium.com/@SergeyNuzhdin/going-open-source-in-monitoring-part-iii-10-most-useful-grafana-dashboards-to-monitor-kubernetes-7d22ac4645db)
+- 따라서 추가는 Grafana 페이지에 들어가서 직접 해야함
 ```console
 # Download Dashboard
 curl -X GET -u $GITHUB_TOKEN:x-oauth-basic -H 'Accept: application/vnd.github.v4.raw' \
@@ -35,6 +40,9 @@ kubectl -n monitoring annotate configmaps my-custom-dashboard k8s-sidecar-target
 kubectl -n monitoring label configmaps my-custom-dashboard grafana_dashboard=1
 ```
 
+
+
+# Uninstall
 ```console
 # Prometheus Operator Delete
 helm delete -n monitoring prometheus-operator
