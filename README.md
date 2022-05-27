@@ -57,10 +57,12 @@ kubectl -n fluent-bit apply -f fluent-bit
 
 
 # OUTPUT
-Match : Kubernetes 의 Tag 는 kube.var.log.containers.<namespace_name>_<pod_name>_<container_name> 와 같이 설정되므로 Container 이름으로 Ouput Match
-stream : Kinesis DataStream Name
-region : Kinesis DataStream Region
-storage.total_limit_size : storage.type 이 filesystem 인 경우 저장될 file 의 최대 크기
+|Parameter|Description|Default|
+|---|---|---|
+|`Match`|Kubernetes 의 Tag 는 kube.var.log.containers.<namespace_name>_<pod_name>_<container_name> 와 같이 설정되므로 Container 이름으로 Ouput Match||
+|`stream`|Kinesis DataStream Name||
+|`region`|Kinesis DataStream Region||
+|`storage.total_limit_size`|storage.type 이 filesystem 인 경우 저장될 file 의 최대 크기||
 
 
 
@@ -77,12 +79,12 @@ storage.total_limit_size : storage.type 이 filesystem 인 경우 저장될 file
     Skip_Long_Lines   On
     Refresh_Interval  10
     storage.type      filesystem
-    Path              /var/log/containers/*`_<EXAMPLE>`*.log
+    Path              /var/log/containers/*_<EXAMPLE>*.log
 
 [OUTPUT]
     Name kinesis_streams
     storage.total_limit_size  1G
-    Match kube.var.log.containers.*`_<EXAMPLE>-`*
+    Match kube.var.log.containers.*_<EXAMPLE>-*
     stream app-log-reco-api
     region ap-northeast-2
 ```
