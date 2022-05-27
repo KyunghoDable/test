@@ -1,6 +1,7 @@
-# Value 파일 내 AlertManager 슬랙 채널 및 타이틀명 변경
-alertmanager.config.receivers[1].slack_configs.title
-alertmanager.config.receivers[1].slack_configs.channel
+# 설치 전 요구사항
+### Value 파일 내 AlertManager 슬랙 채널 및 타이틀명 변경
+- alertmanager.config.receivers[1].slack_configs.title
+- alertmanager.config.receivers[1].slack_configs.channel
 
 # Install
 ```console
