@@ -1,10 +1,10 @@
 # Install
 ```console
-CLUSTER_NAME=fluentbit-test-1
-ALERTMANAGER_URL=asd.dable.io
-PROMETHEUS_URL=zxc.dable.io
-GRAFANA_URL=qwe.dable.io
-GITHUB_TOKEN="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"
+CLUSTER_NAME=
+ALERTMANAGER_URL=
+PROMETHEUS_URL=
+GRAFANA_URL=
+GITHUB_TOKEN=""
 
 # Create Monitoring Namespace
 kubectl create ns monitoring
